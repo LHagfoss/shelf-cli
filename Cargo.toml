@@ -1,0 +1,9 @@
+[package]
+name = "shelf"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+fs_extra = "1.3"
+dirs = "5.0"
