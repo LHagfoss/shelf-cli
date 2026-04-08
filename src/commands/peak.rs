@@ -4,7 +4,7 @@ use std::path::Path;
 
 pub fn peak(cache_dir: &Path) {
     if !cache_dir.exists() {
-        println!("{}", format!("Shelf is empty.").red());
+        println!("{}", format!("Shelf is empty.").yellow());
         return;
     }
 
@@ -20,6 +20,7 @@ pub fn peak(cache_dir: &Path) {
         "{}",
         format!("Currently shelved items:").bright_white().bold()
     );
+
     let mut count = 0;
 
     for entry in entries.flatten() {
@@ -31,10 +32,11 @@ pub fn peak(cache_dir: &Path) {
         } else {
             println!("  {}", name.bright_white());
         }
+
         count += 1;
     }
 
     if count == 0 {
-        println!("{}", format!("Shelf is empty.").red());
+        println!("{}", format!("Shelf is empty.").yellow());
     }
 }
