@@ -122,6 +122,14 @@ shelf --help
 shelf copy --help
 ```
 
+## About 
+
+Prints some inforamtion or sum
+
+```bash
+shelf about
+```
+
 ---
 
 Built with 🦀 Rust.

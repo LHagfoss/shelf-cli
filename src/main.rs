@@ -35,5 +35,8 @@ fn main() {
         Commands::Clear => {
             commands::clear(&cache_dir);
         }
+        Commands::About => {
+            commands::about();
+        }
     }
 }

@@ -40,4 +40,7 @@ pub enum Commands {
 
     /// Clear the shelf.
     Clear,
+
+    /// About the Shelf cli tool
+    About,
 }
