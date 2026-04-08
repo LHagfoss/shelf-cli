@@ -15,10 +15,13 @@ fn main() {
 
     match &cli.command {
         Commands::Copy { files } => {
-            commands::copy::run(files, &cache_dir);
+            commands::copy(files, &cache_dir);
         }
         Commands::Paste { destination } => {
-            commands::paste::run(destination.as_ref(), &cache_dir);
+            commands::paste(destination.as_ref(), &cache_dir);
+        }
+        Commands::Peak => {
+            commands::peak(&cache_dir);
         }
     }
 }

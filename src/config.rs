@@ -19,4 +19,6 @@ pub enum Commands {
     Paste {
         destination: Option<String>,
     },
+
+    Peak,
 }

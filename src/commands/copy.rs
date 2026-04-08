@@ -2,7 +2,7 @@ use colored::Colorize;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-pub fn run(files: &[String], cache_dir: &Path) {
+pub fn copy(files: &[String], cache_dir: &Path) {
     if cache_dir.exists() {
         fs::remove_dir_all(cache_dir).unwrap();
     }

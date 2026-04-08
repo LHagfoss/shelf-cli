@@ -2,7 +2,7 @@ use colored::Colorize;
 use std::fs;
 use std::path::Path;
 
-pub fn run(destination: Option<&String>, cache_dir: &Path) {
+pub fn paste(destination: Option<&String>, cache_dir: &Path) {
     let dest_str = destination.map(|s| s.as_str()).unwrap_or(".");
     let dest_path = Path::new(dest_str);
 
@@ -11,7 +11,7 @@ pub fn run(destination: Option<&String>, cache_dir: &Path) {
     }
 
     if !cache_dir.exists() {
-        eprintln!("{}", "Shelf is empty.".white().bold());
+        eprintln!("{}", format!("Shelf is empty.").white().bold());
         return;
     }
 
