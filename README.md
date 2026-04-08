@@ -2,7 +2,7 @@
 
 # Shelf 🍱
 
-**A temporary, disk-based holding buffer for files and folders in your terminal.**
+**"A "git stash" like command, for files and folders.**
 
 <img src="image.png" alt="Shelf CLI Demo Screenshot" width="800" style="border-radius: 10px; margin: 20px 0;" />
 
@@ -15,6 +15,8 @@ Standard terminal clipboards (`pbcopy`, `xclip`) are great for text, but they ch
 Sometimes you just need to grab a few files from deep inside one project, navigate to an entirely different part of your system, and drop them there. You don't want to construct a long `cp` command with complex absolute paths.
 
 I couldn't find a simple tool that acted like a "holding area" for files across terminal sessions.
+
+With git, you have git ``git stash`` command, which holds onto files so you can do smth else, and with shelf its almost the same.
 
 ## The Solution: Shelf
 
