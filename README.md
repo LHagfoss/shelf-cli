@@ -16,7 +16,7 @@ Sometimes you just need to grab a few files from deep inside one project, naviga
 
 I couldn't find a simple tool that acted like a "holding area" for files across terminal sessions.
 
-With git, you have git ``git stash`` command, which holds onto files so you can do smth else, and with shelf its almost the same.
+With git, you have the `git stash` command, which holds onto files so you can do something else, and with shelf it's almost the same.
 
 ## The Solution: Shelf
 
@@ -29,7 +29,7 @@ It uses a temporary directory on your disk as a buffer. Because it uses the disk
 Currently, the best way to install it is via Rust's `cargo`.
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/shelf.git](https://github.com/YOUR_USERNAME/shelf.git)
+git clone https://github.com/YOUR_USERNAME/shelf.git
 cd shelf
 cargo install --path .
 ```
@@ -38,9 +38,9 @@ Make sure your Cargo bin path (usually `~/.cargo/bin`) is in your shell's PATH.
 
 ## Usage
 
-The workflow is simple: `copy` things onto the shelf, move somewhere else, and `paste` them off.
+The workflow is simple: put things onto the shelf, move somewhere else, and take them off.
 
-### 1. Copy (Shelve items)
+### 1. Copy (Replace items on the shelf)
 
 This command clears whatever is currently on the shelf and copies the new items onto it.
 
@@ -52,9 +52,26 @@ shelf copy file1.tsx utils.ts
 shelf copy ./src/components ./assets/images
 ```
 
-### 2. Paste (Unshelve items)
+### 2. Add (Append items to the shelf)
 
-Copies everything currently on the shelf to the specified destination.
+This command adds new items to the existing shelf without clearing it first.
+
+```bash
+# Add files to the current shelf
+shelf add extra-file.txt
+```
+
+### 3. Peak (View the shelf)
+
+Look at what is currently stored on the shelf.
+
+```bash
+shelf peak
+```
+
+### 4. Paste (Copy items from the shelf)
+
+Copies everything currently on the shelf to the specified destination. The shelf remains intact.
 
 ```bash
 # Navigate somewhere else
@@ -65,6 +82,34 @@ shelf paste
 
 # OR paste into a specific folder
 shelf paste ./src/legacy-code
+```
+
+### 5. Pop (Move items from the shelf)
+
+Copies everything currently on the shelf to the specified destination, and then **clears the shelf**.
+
+```bash
+# Pop into the current directory
+shelf pop
+
+# OR pop into a specific folder
+shelf pop ./src/legacy-code
+```
+
+### 6. Drop (Remove specific item)
+
+Removes a specific file or folder from the shelf.
+
+```bash
+shelf drop file1.tsx
+```
+
+### 7. Clear (Empty the shelf)
+
+Removes all items currently stored on the shelf.
+
+```bash
+shelf clear
 ```
 
 ## Help
