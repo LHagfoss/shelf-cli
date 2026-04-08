@@ -1,3 +1,4 @@
+use colored::Colorize;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -12,7 +13,10 @@ pub fn run(files: &[String], cache_dir: &Path) {
     let options = fs_extra::dir::CopyOptions::new();
 
     match fs_extra::copy_items(&paths, cache_dir, &options) {
-        Ok(_) => println!("✨ Shelved {} items.", files.len()),
-        Err(e) => eprintln!("❌ Error shelving files: {}", e),
+        Ok(_) => println!(
+            "{}",
+            format!("Shelved {} items.", files.len()).green().bold()
+        ),
+        Err(e) => eprintln!("{}", format!("❌ Error shelving files: {}", e).red().bold()),
     }
 }

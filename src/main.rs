@@ -1,28 +1,10 @@
-use clap::{Parser, Subcommand};
+use clap::Parser;
 use std::path::PathBuf;
 
+use crate::config::{Cli, Commands};
+
 mod commands;
-
-#[derive(Parser)]
-#[command(name = "shelf")]
-#[command(version = "1.0")]
-#[command(about = "A disk-based holding buffer for files and folders.", long_about = None)]
-struct Cli {
-    #[command(subcommand)]
-    command: Commands,
-}
-
-#[derive(Subcommand)]
-enum Commands {
-    Copy {
-        #[arg(required = true)]
-        files: Vec<String>,
-    },
-
-    Paste {
-        destination: Option<String>,
-    },
-}
+mod config;
 
 fn main() {
     let cli = Cli::parse();

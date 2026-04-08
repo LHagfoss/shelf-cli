@@ -1,8 +1,9 @@
+use colored::Colorize;
 use std::fs;
 use std::path::Path;
 
 pub fn run(destination: Option<&String>, cache_dir: &Path) {
-    let dest_str = destination.as_deref().unwrap_or(".");
+    let dest_str = destination.map(|s| s.as_str()).unwrap_or(".");
     let dest_path = Path::new(dest_str);
 
     if !dest_path.exists() {
@@ -10,7 +11,7 @@ pub fn run(destination: Option<&String>, cache_dir: &Path) {
     }
 
     if !cache_dir.exists() {
-        eprintln!("📭 Shelf is empty.");
+        eprintln!("{}", "Shelf is empty.".white().bold());
         return;
     }
 
@@ -22,7 +23,12 @@ pub fn run(destination: Option<&String>, cache_dir: &Path) {
 
     let options = fs_extra::dir::CopyOptions::new();
     match fs_extra::copy_items(&paths, dest_path, &options) {
-        Ok(_) => println!("🚚 Pasted {} items to '{}'", paths.len(), dest_str),
-        Err(e) => eprintln!("❌ Error pasting files: {}", e),
+        Ok(_) => println!(
+            "{}",
+            format!("Pasted {} items to '{}'", paths.len(), dest_str)
+                .green()
+                .bold()
+        ),
+        Err(e) => eprintln!("{}", format!("❌ Error pasting files: {}", e).red().bold()),
     }
 }
